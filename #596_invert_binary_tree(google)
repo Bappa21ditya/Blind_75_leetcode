@@ -1,0 +1,27 @@
+recursive
+ TreeNode* invertTree(TreeNode* root) {
+ if(root==NULL)
+   return NULL;
+ swap(root->left,root->right);
+ invert(root->left);
+ invert(root->right);
+ return root;
+ }
+ 
+ iterative:
+  TreeNode* invertTree(TreeNode* root) {
+  if(root==NULL)
+    return NULL;
+  queue<TreeNode* >q;
+  q.push(root);
+  while(!q.empty());
+  {
+  TreeNode* a=q.front();
+  q.pop();
+  swap(a->left,a->right);
+  if(a->left!=NULL)
+    q.push(a->left);
+  if(a->right!=NULL)
+    q.push(a->right);
+  }
+  return root;
